@@ -20,7 +20,7 @@ const Navbar = () => {
         {/* desktop nav */}
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-            <Link href={"/"} className="flex items-center gap-2 font-heading font-bold text-xl text-primary">
+            <Link to={"/"} className="flex items-center gap-2 font-heading font-bold text-xl text-primary">
                 <MdDirectionsCar className="text-2xl" />
                 <span>Drive<span className="text-base-content">Fleet</span></span>
             </Link>
