@@ -7,7 +7,7 @@ import { FiEye, FiEyeOff, FiImage, FiLock, FiMail, FiUsers } from "react-icons/f
 import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
-    const { createUser, updateUser, googleLogin } = useAuth();
+    const { createUser, updateUser, googleLogin, logoutUser } = useAuth();
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -89,17 +89,20 @@ const Register = () => {
                 photoURL: form.photoURL,
             });
 
+            await logoutUser();
             toast.success('Registration Successful! Please sign in.');
             navigate('/login');
 
         } catch (err) {
-            toast.error(
-                err.code === 'auth/email-already-in-use'
-                ? "Email already in use. Try logging in."
-                : "Registration failed. Please try again."
-            );
-        } finally {
-            // setLoading(false);
+            // toast.error(
+            //     err.code === 'auth/email-already-in-use'
+            //     ? "Email already in use. Try logging in."
+            //     : "Registration failed. Please try again."
+            // );
+  
+            console.log("REGISTER ERROR:", err);
+            toast.error("Registration failed. Check console.");
+
         }
     };
 
@@ -115,7 +118,8 @@ const Register = () => {
             });
             
             toast.success('Registered with Google!');
-            navigate('/');
+            window.location.href = "/";
+            // navigate("/");
         }catch{
             toast.error('Google sign-in failed');
         }
@@ -274,7 +278,7 @@ const Register = () => {
                                             key={c.key}
                                             className={`flex items-center gap-2 text-xs ${errors[c.key] ? 'text-error' : 'text-success'}`}
                                         >
-                                            <span>{!errors[c.key] ? '✗' : '✓'}</span>
+                                            <span>{errors[c.key] ? '✗' : '✓'}</span>
                                             <span>{c.label}</span>
                                         </div>
                                     ))}

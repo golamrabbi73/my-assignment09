@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MdDirectionsCar } from "react-icons/md";
 import { FiEye, FiEyeOff, FiLock, FiMail } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const {loginUser, googleLogin, loading} = useAuth();
@@ -157,7 +158,7 @@ const Login = () => {
                         // disabled={loading}
                         className="btn btn-primary w-full"
                     >
-                        Create Account
+                        Sign in
                         {/* {loading ? (
                             <span className="loading loading-spinner loading-sm"></span>) : ("Create Account")} */}
                     </button>
