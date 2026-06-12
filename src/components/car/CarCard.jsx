@@ -1,5 +1,4 @@
-import { FaGasPump } from "react-icons/fa"
-import { GiGearStickPattern } from "react-icons/gi"
+import { FaUser } from "react-icons/fa"
 import { MdAirlineSeatReclineNormal, MdLocationOn } from "react-icons/md"
 import { Link } from "react-router-dom"
 
@@ -35,13 +34,13 @@ const CarCard = ({ car }) => {
 
             {/* badges */}
 
-            {/* brand badge */}
+            {/* car type badge */}
             <div className="absolute top-3 left-3 z-10">
                 <span className="bg-black/60 font-heading
                         text-[9px] tracking-[2.5px] uppercase font-bold
                         px-2.5 py-1 rounded-md border border-white/20
                         backdrop-blur-md text-white/90">
-                    {car.brand}
+                    {car.carType}
                 </span>
             </div>
 
@@ -108,20 +107,12 @@ const CarCard = ({ car }) => {
                     {car.seatCapacity} seats
                 </span>
 
-                {/* transmission */}
+                {/* owner */}
                 <span className="flex items-center gap-1 text-[11px] text-base-content/60">
-                    <GiGearStickPattern
+                    <FaUser
                         className="text-lg text-primary flex-shrink-0"
                     />
-                    {car.transmission}
-                </span>
-
-                {/* fuel type */}
-                <span className="flex items-center gap-1 text-[11px] text-base-content/60">
-                    <FaGasPump
-                        className="text-lg text-primary flex-shrink-0"
-                    />
-                    {car.fuelType}
+                    {car.ownerName}
                 </span>
             </div>
 

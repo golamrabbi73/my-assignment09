@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register"
 import PrivateRoute from "./PrivateRoute"
 import AddCar from "../pages/AddCar/AddCar"
 import MyAddedCars from "../pages/MyAddedCars/MyAddedCars"
+import ExploreCars from "../pages/ExploreCars/ExploreCars"
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
         { path: "/login", element: <Login />},
         { path: "/register", element: <Register />},
         ],
+    },
+
+    {
+        path: "/cars",
+        element: <ExploreCars />
     },
 
     {
