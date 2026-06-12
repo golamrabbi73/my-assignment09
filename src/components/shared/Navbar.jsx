@@ -11,7 +11,8 @@ const Navbar = () => {
   const navlinks = [
     {to: '/', label: 'Home'},
     {to: '/cars', label: 'Explore Cars'},
-  ]
+  ];
+
   return (
     <nav className='bg-base-100 border-b border-base-300'>
       {/* nav container */}
