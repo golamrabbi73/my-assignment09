@@ -29,7 +29,7 @@ const Navbar = () => {
   const privateLinks = [
     {to: '/add-car', label: 'Add Car'},
     {to: '/my-bookings', label: 'My Bookings'},
-    {to: '/my-cars', label: 'My Added Cars'},
+    {to: '/my-added-cars', label: 'My Added Cars'},
   ]
 
 
