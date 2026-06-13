@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import axiosSecure from "../../api/axiosInstance";
 import LoadingSpinner from "../../components/shared/LoadingSpinner";
-import { Link } from "react-router-dom";
 import CarCard from "../../components/car/CarCard";
 
 

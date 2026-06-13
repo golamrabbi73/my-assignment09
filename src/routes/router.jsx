@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute"
 import AddCar from "../pages/AddCar/AddCar"
 import MyAddedCars from "../pages/MyAddedCars/MyAddedCars"
 import ExploreCars from "../pages/ExploreCars/ExploreCars"
+import CarDetails from "../components/car/CarDetails"
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,13 @@ const router = createBrowserRouter([
     {
         path: "/cars",
         element: <ExploreCars />
+    },
+
+    {
+        path: "/cars/:id",
+        element: <CarDetails />,
+        loader: ({params}) =>
+            fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
     },
 
     {
