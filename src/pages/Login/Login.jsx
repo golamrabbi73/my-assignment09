@@ -5,6 +5,7 @@ import { MdDirectionsCar } from "react-icons/md";
 import { FiEye, FiEyeOff, FiLock, FiMail } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
+import axiosSecure from "../../api/axiosInstance";
 
 const Login = () => {
     const {loginUser, googleLogin, loading} = useAuth();
@@ -22,9 +23,21 @@ const Login = () => {
         setError("");
 
         try{
-            await loginUser (email, password);
+            const result = await loginUser(email, password);
+
+            await axiosSecure.post(
+                "http://localhost:5000/jwt",
+                {
+                    email: result.user.email,
+                },
+                {
+                    withCredentials: true,
+                }
+            );
+            
             toast.success("Welcome back!");
             navigate(from, {replace: true});
+
         } catch (err){
             setError("Invalid email or password. Please try again.");
             toast.error("Login failed");
@@ -33,13 +46,26 @@ const Login = () => {
 
     const handleGoogle = async () => {
         try{
-            await googleLogin();
+            const result = await googleLogin(email, password);
+
+            await axiosSecure.post(
+                "http://localhost:5000/jwt",
+                {
+                    email: result.user.email,
+                },
+                {
+                    withCredentials: true,
+                }
+            );
+
             toast.success("Logged in with Google!");
             navigate(from, {replace:true});
+
         } catch {
             toast.error("Google login failed");
         }
     };
+    
   return (
     <div className="min-h-screen flex">
         {/* left part */}

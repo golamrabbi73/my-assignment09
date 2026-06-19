@@ -11,6 +11,7 @@ import {
 
 import app from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
+import axiosSecure from "../api/axiosInstance";
 
 export const AuthContext = createContext();
 
@@ -44,16 +45,30 @@ const AuthProvider = ({ children }) => {
         });
     };
 
-    const logoutUser = () => {
+    const logoutUser = async () => {
         setLoading(true);
+
+        await axiosSecure.post("/logout");
+        
         return signOut(auth);
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(
+            auth,
+            async (currentUser) => {
             setUser(currentUser);
+
+            if(currentUser?.email){
+                await axiosSecure.post("/jwt", {
+                    email: currentUser.email,
+                });
+            }else{
+                await axiosSecure.post("/logout");
+            }
             setLoading(false);
-        });
+        }
+    );
         
         return () => unsubscribe();
     }, []);

@@ -8,6 +8,7 @@ import AddCar from "../pages/AddCar/AddCar"
 import MyAddedCars from "../pages/MyAddedCars/MyAddedCars"
 import ExploreCars from "../pages/ExploreCars/ExploreCars"
 import CarDetails from "../components/car/CarDetails"
+import MyBookings from "../pages/MyBookings/MyBookings"
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,15 @@ const router = createBrowserRouter([
         element: (
             <PrivateRoute >
                 <AddCar />
+            </PrivateRoute>
+        )
+    },
+
+    {
+        path: "/my-bookings",
+        element: (
+            <PrivateRoute >
+                <MyBookings />
             </PrivateRoute>
         )
     },
