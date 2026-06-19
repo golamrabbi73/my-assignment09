@@ -9,6 +9,7 @@ import MyAddedCars from "../pages/MyAddedCars/MyAddedCars"
 import ExploreCars from "../pages/ExploreCars/ExploreCars"
 import CarDetails from "../components/car/CarDetails"
 import MyBookings from "../pages/MyBookings/MyBookings"
+import NotFound from "../pages/Not Found/NotFound"
 
 
 const router = createBrowserRouter([
@@ -16,49 +17,47 @@ const router = createBrowserRouter([
         path: "/",
         element: <MainLayout />,
         children: [
-        { index: true, element: <Home /> },
-        { path: "/login", element: <Login />},
-        { path: "/register", element: <Register />},
+            { index: true, element: <Home /> },
+            { path: "/login", element: <Login />},
+            { path: "/register", element: <Register />},
+
+            { path: "/cars", element: <ExploreCars />},
+
+            {
+                path: "/cars/:id",
+                element: <CarDetails />,
+                loader: ({params}) =>
+                    fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
+            },
+
+            {
+                path: "/add-car",
+                element: (
+                    <PrivateRoute >
+                        <AddCar />
+                    </PrivateRoute>
+                )
+            },
+
+            {
+                path: "/my-bookings",
+                element: (
+                    <PrivateRoute >
+                        <MyBookings />
+                    </PrivateRoute>
+                )
+            },
+
+            {
+                path: "/my-added-cars",
+                element: (
+                    <PrivateRoute >
+                        <MyAddedCars />
+                    </PrivateRoute>
+                )
+            },
+            { path: "*", element: <NotFound />},
         ],
-    },
-
-    {
-        path: "/cars",
-        element: <ExploreCars />
-    },
-
-    {
-        path: "/cars/:id",
-        element: <CarDetails />,
-        loader: ({params}) =>
-            fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
-    },
-
-    {
-        path: "/add-car",
-        element: (
-            <PrivateRoute >
-                <AddCar />
-            </PrivateRoute>
-        )
-    },
-
-    {
-        path: "/my-bookings",
-        element: (
-            <PrivateRoute >
-                <MyBookings />
-            </PrivateRoute>
-        )
-    },
-
-    {
-        path: "/my-added-cars",
-        element: (
-            <PrivateRoute >
-                <MyAddedCars />
-            </PrivateRoute>
-        )
     },
 ]);
 

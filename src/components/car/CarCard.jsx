@@ -74,9 +74,6 @@ const CarCard = ({ car }) => {
                     >
                         new
                     </span>
-                    // <span className="badge badge-warning uppercase">
-                    //     new
-                    // </span>
                 )}
             </div>
             

@@ -26,7 +26,7 @@ const Login = () => {
             const result = await loginUser(email, password);
 
             await axiosSecure.post(
-                "http://localhost:5000/jwt",
+                "/jwt",
                 {
                     email: result.user.email,
                 },
@@ -49,7 +49,7 @@ const Login = () => {
             const result = await googleLogin(email, password);
 
             await axiosSecure.post(
-                "http://localhost:5000/jwt",
+                "/jwt",
                 {
                     email: result.user.email,
                 },

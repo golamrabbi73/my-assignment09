@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axiosSecure from "../../api/axiosInstance";
 import LoadingSpinner from "../../components/shared/LoadingSpinner";
 import CarCard from "../../components/car/CarCard";
+import { useSearchParams } from "react-router-dom";
 
 
 const ExploreCars = () => {
@@ -9,7 +10,8 @@ const ExploreCars = () => {
     const [loading, setLoading] = useState(true);
     const [searchText, setSearchText] = useState("");
     const [search, setSearch] = useState("");
-    const [carType, setCarType] = useState("");
+    const [searchParams] = useSearchParams();
+    const [carType, setCarType] = useState(searchParams.get("type") || "");
 
     const fetchCars = async () => {
       setLoading(true);
@@ -30,6 +32,10 @@ const ExploreCars = () => {
     useEffect(() => {
         fetchCars();
     }, [search, carType]);
+
+     useEffect(() => {
+      setCarType(searchParams.get("type") || "");
+    }, [searchParams.toString()]);
 
     if(loading) {
       return <LoadingSpinner />

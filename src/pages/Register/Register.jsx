@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { MdDirectionsCar } from "react-icons/md";
 import { FiEye, FiEyeOff, FiImage, FiLock, FiMail, FiUsers } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
+import axiosSecure from "../../api/axiosInstance";
 
 const Register = () => {
     const { createUser, updateUser, googleLogin, logoutUser } = useAuth();
@@ -55,13 +56,8 @@ const Register = () => {
 
     // save user
     const saveUser = async (user) => {
-        const res = await fetch("http://localhost:5000/users", {
-            method: "POST",
-            headers: { "content-type": "application/json",
-            },
-            body: JSON.stringify(user),
-        });
-        return res.json();
+        const res = await axiosSecure.post("/users", user);
+        return res.data;
     };
 
     // submit

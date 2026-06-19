@@ -88,7 +88,7 @@ const MyAddedCars = () => {
     };
 
     if(loading) {
-        <LoadingSpinner />
+        return <LoadingSpinner />
     }
 
   return (
@@ -302,7 +302,7 @@ const MyAddedCars = () => {
                                     type="checkbox"
                                     className="toggle toggle-primary toggle-sm"
                                     checked={editCar.availability}
-                                    onChange={(e) => setEditCar((p) => ({ ...p, availability: e.target.value}))}
+                                    onChange={(e) => setEditCar((p) => ({ ...p, availability: e.target.checked}))}
                                 />
                                 <span className="label-text font-medium">Available for booking</span>
                             </label>

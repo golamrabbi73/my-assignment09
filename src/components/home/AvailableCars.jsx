@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react"
 import CarCard from "../car/CarCard";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 
 const AvailableCars = () => {
     const [cars, setCars] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:5000/cars")
+        fetch(`${import.meta.env.VITE_API_URL}/cars`)
         .then((res) => res.json())
-        .then((data) => setCars(data.slice(1, 7)))
-        .catch((err) => console.log(err));
+        .then((data) =>  {
+            setCars(data.slice(0, 6));
+            setLoading(false);
+        })
+        .catch(() => {
+            setError("Failed to load cars");
+            setLoading(false);
+        });
     }, []);
+
+    if(loading) return <LoadingSpinner />
+
+    if(error) return <p className="text-center text-red-500 py-10">{error}</p>
 
   return (
     <section className="py-15 px-4 md:px-10">

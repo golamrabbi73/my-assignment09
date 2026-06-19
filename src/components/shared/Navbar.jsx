@@ -34,7 +34,8 @@ const Navbar = () => {
 
 
   return (
-    <nav className='bg-base-100 border-b border-base-300'>
+    <nav className='sticky top-0 z-50
+     bg-base-100 border-b border-base-300'>
       {/* nav container */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 
@@ -53,7 +54,9 @@ const Navbar = () => {
                 <NavLink
                   key={links.to}
                   to={links.to}
-                  className="font-medium text-sm transition-colors"
+                  className={({ isActive }) =>
+                  `transition-colors rounded text-sm font-medium ${isActive ? 'text-primary' : 'text-base-content/70'}`
+                }
                 >
                   {links.label}
                 </NavLink>
@@ -88,9 +91,11 @@ const Navbar = () => {
                   </li>
                   {privateLinks.map((l) => (
                     <li key={l.to}>
-                      <Link to={l.to} className='text-sm'>
+                      <NavLink to={l.to}
+                        className={({ isActive }) =>
+                          `transition-colors rounded text-sm font-medium ${isActive ? 'text-primary' : 'text-base-content/70'}`}>
                         {l.label}
-                      </Link>
+                      </NavLink>
                     </li>
                   ))}
                   <li className='border-t border-base-300 mt-1'>
@@ -104,9 +109,12 @@ const Navbar = () => {
                 </ul>
               </div>
             ) : (
-              <Link to={"/login"} className="btn btn-primary btn-sm font-heading">
-              Login
-            </Link>
+              <Link
+                to={"/login"}
+                className="btn btn-primary btn-sm font-heading"
+              >
+                Login
+              </Link>
             )}
 
             {/* Mobile hamburger */}

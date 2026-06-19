@@ -202,7 +202,7 @@ const BookingModal = ({car, onClose, onSuccess}) => {
                     className="btn btn-primary flex-1 font-heading"
                 >
                     {loading ? (
-                        <span className="loading laoding-spinner loading-sm"/>
+                        <span className="loading loading-spinner loading-sm"/>
                     ) : (
                         "Confirm Booking"
                     )}
