@@ -50,7 +50,7 @@ DriveFleet is a full-stack car rental platform where users can explore available
 
 ```bash
 # clone the repository
-git clone https://github.com/golamrabbi73/my-assignment09
+git clone https://github.com/golamrabbi73/my-assignment09.git
 
 # navigate into the project
 cd my-assignment09
