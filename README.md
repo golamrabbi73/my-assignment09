@@ -1,16 +1,85 @@
-# React + Vite
+# 🚗 DriveFleet — Car Rental Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://my-assignment09.vercel.app](https://my-assignment09.vercel.app)
 
-Currently, two official plugins are available:
+DriveFleet is a full-stack car rental platform where users can explore available cars, view detailed listings, book vehicles, manage their bookings, and list their own cars for rent. Built with a focus on secure authentication, smooth user experience, and a clean, recruiter-friendly design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔐 **Secure Authentication** — Email/password and Google login powered by Firebase, with JWT stored in HTTPOnly cookies for protected API access.
+- 🚘 **Browse & Search Cars** — Explore all available cars with real-time search by car name and filtering by car type.
+- 📅 **Easy Booking System** — Book any available car in a few clicks, with options for driver assistance and special requests.
+- 🛠️ **Manage Your Listings** — Add, update, and delete your own car listings with full control over pricing, availability, and details.
+- 📋 **Personal Dashboard** — Track all your bookings and added cars in dedicated, easy-to-navigate pages.
+- 📱 **Fully Responsive** — Optimized layout and experience across mobile, tablet, and desktop devices.
+- 🌗 **Light/Dark Theme Toggle** — Switch between light and dark mode for a comfortable browsing experience.
+- ⚡ **Smooth Animations** — Page transitions and UI interactions powered by Framer Motion.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+**Client:**
+- React + Vite
+- Tailwind CSS + DaisyUI
+- React Router
+- Firebase Authentication
+- Axios
+- Framer Motion
+- SweetAlert2 & React Hot Toast
+
+**Server:**
+- Node.js + Express
+- MongoDB (Native Driver)
+- JWT (JSON Web Token)
+- Cookie-based authentication
+
+---
+
+## 📂 Related Repositories
+
+- **Client Repository:** [https://github.com/golamrabbi73/my-assignment09](https://github.com/golamrabbi73/my-assignment09)
+- **Server Repository:** [https://github.com/golamrabbi73/my-assignment09-server](https://github.com/golamrabbi73/my-assignment09-server)
+- **Server Live URL:** [https://my-assignment09-server.onrender.com](https://my-assignment09-server.onrender.com)
+
+---
+
+## 🚀 Getting Started Locally
+
+```bash
+# clone the repository
+git clone https://github.com/golamrabbi73/my-assignment09
+
+# navigate into the project
+cd my-assignment09
+
+# install dependencies
+npm install
+
+# create a .env file with your Firebase config and API URL
+# (see .env.example or required variables below)
+
+# run the development server
+npm run dev
+```
+
+### Required Environment Variables
+
+```
+VITE_APIKEY=
+VITE_AUTHDOMAIN=
+VITE_PROJECTID=
+VITE_STORAGEBUCKET=
+VITE_MESSAGINGSENDERID=
+VITE_APPID=
+VITE_MEASUREMENTID=
+VITE_API_URL=
+```
+
+---
+
+## 👤 Author
+
+Built as part of a full-stack web development assignment — DriveFleet Car Rental Platform.
